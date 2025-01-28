@@ -1,9 +1,8 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bingo Game</title>
+    <title>Bingo ED2</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -12,7 +11,6 @@
         }
         .bingo-container {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
             gap: 10px;
             margin: 20px auto;
             max-width: 800px;
@@ -58,7 +56,6 @@
     </style>
 </head>
 <body>
-    <h1>Bingo Game</h1>
     <button id="add-button">Add Bingo Item</button>
     <div class="bingo-container" id="bingo-container">
         <!-- Bingo items will appear here -->
@@ -67,6 +64,8 @@
     <script>
         const container = document.getElementById('bingo-container');
         const addButton = document.getElementById('add-button');
+
+        let itemCount = 0;
 
         addButton.addEventListener('click', () => {
             const item = document.createElement('div');
@@ -83,6 +82,10 @@
             });
 
             container.appendChild(item);
+            itemCount++;
+
+            const gridSize = Math.ceil(Math.sqrt(itemCount));
+            container.style.gridTemplateColumns = `repeat(${gridSize}, 1fr)`;
         });
     </script>
 </body>
